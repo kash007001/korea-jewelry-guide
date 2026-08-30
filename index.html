@@ -243,7 +243,7 @@ footer p{margin:0 0 6px}
       <button class="chip" data-k="谷歌">谷歌账号能登</button>
       <button class="chip" data-k="批发">找批发客户</button>
       <button class="chip" data-k="侵权">侵权红线</button>
-      <button class="chip" data-k="服务器IP方案">IP / 服务器</button>
+      <button class="chip" data-k="服务器IP方案">IP / 服务器 / 手机</button>
       <button class="chip" data-k="域名">域名</button>
       <button class="chip" data-k="韩语">韩语要求</button>
     </div>
@@ -253,7 +253,7 @@ footer p{margin:0 0 6px}
       <a href="#s3">③ 各平台运营要点</a>
       <a href="#s4">④ B2B 批发专线</a>
       <a href="#s5">⑤ 侵权红线</a>
-      <a href="#s6">⑥ 服务器与 IP</a>
+      <a href="#s6">⑥ 服务器 / IP / 手机</a>
       <a href="#s7">⑦ 域名</a>
       <a href="#s8">⑧ 搭建步骤</a>
       <a href="#s9">⑨ 30 天计划</a>
@@ -828,15 +828,27 @@ footer p{margin:0 0 6px}
 <section id="s6">
   <div class="sec-head">
     <div class="sec-num">06</div>
-    <h2>服务器与 IP：要不要买家庭 IP</h2>
-    <p class="sec-desc">你问的这个问题最关键，先给判断，再给配置和价格。</p>
+    <h2>服务器、IP 与手机环境</h2>
+    <p class="sec-desc">要不要买家庭 IP、手机要不要刷机——这两个问题的准确答案在这里。</p>
   </div>
 
-  <div class="callout key searchable" data-tags="服务器IP方案 住宅IP 家庭IP 要不要买 判断 结论 机房IP IDC 矩阵 单账号">
-    <h4>专业判断：看你要做几个账号</h4>
-    <p><strong>只做 1–2 个 TikTok 账号、用手机发视频 → 不用买家庭 IP。</strong>一台韩国 VPS 自建节点（约 ¥45/月）就够了，关键是<strong>IP 固定不换</strong>。</p>
-    <p><strong>要做 3 个以上账号矩阵，或用电脑批量运营 → 必须买家庭 IP（住宅 IP）。</strong>没有例外。</p>
-    <p style="margin-top:10px"><strong>为什么？</strong>TikTok 的风控看三层：IP + 设备指纹 + 行为。VPS 给你的是数据中心 IP（IDC 段），本身信任分就低；再让多个账号共用同一个机房 IP，等于自己举报自己「这是批量号」。住宅 IP 是真实家庭宽带的 IP，在 TikTok 眼里就是一个正常韩国用户。</p>
+  <div class="callout key searchable" data-tags="服务器IP方案 住宅IP 家庭IP 要不要买 判断 结论 机房IP IDC 矩阵 单账号 建议买">
+    <h4>准确的判断：住宅 IP 建议买，哪怕只做一个号</h4>
+    <p><strong>VPS 能不能跑？能。</strong>全世界几千万人用机房 IP 的 VPN 刷 TikTok，账号不会因为这一条就被封。所以「VPS 完全不能用」是危言耸听。</p>
+    <p><strong>但机房 IP 会压低你的推荐量。</strong>TikTok 对数据中心 IP 段有一个「信任分」，分低不会封号，但会让你的视频少推给一部分真人。做生意号，起量慢一半就等于白干。</p>
+    <p style="margin-top:10px"><strong>成本对比才是关键：</strong>一条韩国静态住宅 IP 一个月 $3–8，一顿饭钱。为了省这点钱去赌一个要做半年以上的生意号，不划算。<strong>所以：VPS 必买（做节点用），住宅 IP 建议一起买。</strong></p>
+    <p style="margin-top:10px"><strong>什么时候是「必须」而不是「建议」？</strong>做 3 个以上账号矩阵、或用电脑批量运营——这时候没有住宅 IP 就是找死，多个号共用一个机房 IP 等于自己举报自己「这是批量号」。</p>
+  </div>
+
+  <div class="callout ok searchable" data-tags="服务器IP方案 验证 检测 IP 干不干净 风险分 ipinfo scamalytics 自己测">
+    <h4>别猜，自己测：怎么知道你的 IP 干不干净</h4>
+    <p>连上节点后，用手机浏览器打开这两个网站，30 秒就能看出来：</p>
+    <ul>
+      <li><a class="ext" href="https://ipinfo.io" target="_blank" rel="noopener">ipinfo.io</a> — 看 <code>Company Type</code>。显示 <strong>hosting / datacenter</strong> 就是机房 IP，显示 <strong>isp</strong> 才是住宅 IP</li>
+      <li><a class="ext" href="https://scamalytics.com/ip" target="_blank" rel="noopener">scamalytics.com/ip</a> — 看风险分。<strong>0–25 分安全，25–50 中等，50 以上就该换 IP 了</strong></li>
+      <li>再打开 TikTok 看推荐流：<strong>如果刷出来全是韩语内容，说明区域识别成功了</strong>；还在推中文内容就是环境没配对</li>
+    </ul>
+    <p style="margin-top:8px">先买 VPS 测一下，风险分高再补住宅 IP，这样最省钱也最有依据。</p>
   </div>
 
   <div class="grid two">
@@ -891,9 +903,57 @@ footer p{margin:0 0 6px}
     </div>
   </div>
 
-  <div class="callout ok searchable" data-tags="服务器IP方案 手机 运营 一号一环境 建议 实操" style="margin-top:14px">
-    <h4>实操建议：手机运营才是最稳的</h4>
-    <p>如果你只做 1–2 个号，<strong>最稳的方案是一台干净的手机（最好是新的或恢复出厂的）+ 韩国 VPS 节点</strong>。手机自带的真实设备指纹，比任何指纹浏览器都可信。等做到 5 个号以上，再上电脑 + 指纹浏览器 + 住宅 IP 池。</p>
+  <h3 style="margin:30px 0 14px; font-size:18px">手机怎么准备：不用刷机，但要设对</h3>
+
+  <div class="callout danger searchable" data-tags="服务器IP方案 手机 刷机 要不要刷机 root 越狱 解锁 bootloader 改机 不要">
+    <h4>千万别刷机、别 root、别越狱</h4>
+    <p><strong>刷机（刷第三方系统）、root、越狱、解锁 bootloader —— 这几件事一件都不要做。</strong>很多人以为这样能「改机防关联」，实际上完全反了：TikTok 会主动检测设备是否被 root / 越狱，一旦检测到，你的设备信任分直接掉到底，比机房 IP 严重得多。</p>
+    <p style="margin-top:8px">同理，<strong>不要装那些「改机软件」「一键新机」工具</strong>。它们都要 root 才能用，等于自己给自己贴标签。</p>
+  </div>
+
+  <div class="grid two">
+    <div class="card searchable" data-tags="服务器IP方案 手机 恢复出厂 干净 设备 一号一机 抖音 卸载 准备">
+      <div class="card-top">
+        <h3>该做的：一台干净手机</h3>
+        <span class="stars">必做</span>
+      </div>
+      <p class="tagline">不用刷机，恢复出厂设置就够了</p>
+      <div class="block">
+        <div class="block-t do">✓ 该怎么做</div>
+        <ul>
+          <li><strong>最好用一台专门的手机</strong>。二手 iPhone 也行，几百块的事，别和你日常用的手机混着用</li>
+          <li>如果这台手机以前登过 TikTok 或抖音，<strong>恢复出厂设置</strong>（设置 → 通用 → 传输或还原）。这一步是为了清掉旧的设备标识，跟刷机是两回事</li>
+          <li><strong>同一台手机上不要装抖音国内版</strong>，也不要留任何中国区 App</li>
+          <li><strong>一台手机只登一个 TikTok 账号</strong>，永远不切换</li>
+          <li>iPhone 比安卓更稳（设备指纹更「干净」，而且 Shadowrocket 好用）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="服务器IP方案 手机 设置 语言 时区 首尔 地区 SIM卡 不插卡 定位 Apple ID App Store 韩国">
+      <div class="card-top">
+        <h3>关键设置清单</h3>
+        <span class="stars">照着改</span>
+      </div>
+      <p class="tagline">信号一致比 IP 类型更重要</p>
+      <div class="block">
+        <div class="block-t do">✓ 逐项设置</div>
+        <ul>
+          <li><strong>系统语言</strong> → 韩语（至少改成英语，绝对不要留中文）</li>
+          <li><strong>时区</strong> → 首尔 GMT+9，关掉「自动设置」</li>
+          <li><strong>SIM 卡 → 建议直接不插卡，纯 WiFi 用</strong>。这是最容易被忽略的一条：插着中国 SIM 卡连韩国 IP，等于告诉 TikTok「我人在中国装韩国人」。不插卡就没有这个冲突信号</li>
+          <li><strong>App Store / Google Play 地区</strong> → 改成韩国。iPhone 改 Apple ID 国家地区（付款方式选「无」），安卓改不了就从 APKPure 装韩国版</li>
+          <li><strong>不给 TikTok 定位权限</strong>（设置里直接关掉）</li>
+          <li><strong>节点全局代理</strong>，不要只给 TikTok 单独走代理，其他 App 走国内线路会造成信号打架</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout key searchable" data-tags="服务器IP方案 手机 优先级 重要性 排序 SIM卡 语言 IP 顺序" style="margin-top:14px">
+    <h4>如果只记一件事：信号一致 &gt; IP 类型</h4>
+    <p>很多人只盯着「IP 是不是住宅」，结果手机语言是中文、时区是北京、插着中国 SIM 卡——这时候就算买最贵的住宅 IP 也没用，TikTok 一眼就看出矛盾。</p>
+    <p style="margin-top:8px"><strong>重要性排序：</strong>① 手机语言 / 时区 / 不插中国卡 → ② IP 固定不换 → ③ IP 是不是住宅 → ④ 内容质量（其实这条才是决定生死的）。前三条只决定你的视频能不能被正常推出去，第四条决定推出去之后有没有人看。</p>
   </div>
 </section>
 
@@ -991,26 +1051,26 @@ footer p{margin:0 0 6px}
   </div>
 
   <div class="plans">
-    <div class="plan searchable" data-tags="方案A 试水 便宜 成本 一个账号 VPS">
-      <div class="tier">方案 A · 试水</div>
+    <div class="plan searchable" data-tags="方案A 试水 便宜 成本 一个账号 VPS 先测">
+      <div class="tier">方案 A · 先测</div>
       <div class="price">¥60<span class="per">/月</span></div>
-      <div class="who">先验证能不能做，1–2 个账号，手机运营</div>
+      <div class="who">只是想先跑通、看看 IP 风险分再决定</div>
       <ul>
         <li>韩国 VPS 一台（$6/月）</li>
         <li>.com 域名（¥70/年，折 ¥6/月）</li>
-        <li>不买住宅 IP</li>
-        <li>手机 + VPS 节点即可</li>
+        <li>暂不买住宅 IP</li>
+        <li><strong>先用 ipinfo / scamalytics 测风险分</strong>，分高再补住宅 IP</li>
       </ul>
     </div>
-    <div class="plan best searchable" data-tags="方案B 推荐 住宅IP 官网 成本">
+    <div class="plan best searchable" data-tags="方案B 推荐 住宅IP 官网 成本 一个账号 两个账号">
       <div class="tier">方案 B · 推荐</div>
-      <div class="price">¥200<span class="per">/月</span></div>
-      <div class="who">认真做，3–5 个账号 + 官网接询盘</div>
+      <div class="price">¥120<span class="per">/月</span></div>
+      <div class="who">认真做生意，1–2 个主力账号 + 官网接询盘</div>
       <ul>
         <li>韩国 VPS 一台（$6/月）</li>
-        <li>韩国静态住宅 IP × 3（约 $15/月）</li>
+        <li><strong>韩国静态住宅 IP × 1–2（$3–8 / 个 / 月）</strong></li>
         <li>.com 域名 + Cloudflare Pages 官网（免费）</li>
-        <li>剪辑工具 / 韩语校对成本</li>
+        <li>一台专用手机（一次性成本，二手即可）</li>
       </ul>
     </div>
     <div class="plan searchable" data-tags="方案C 矩阵 多账号 指纹浏览器 成本">
@@ -1064,8 +1124,9 @@ footer p{margin:0 0 6px}
       <h3>第 1 周 · 打地基</h3>
       <div class="block">
         <ul>
+          <li>准备一台干净手机（恢复出厂 + 语言时区改韩国 + 不插中国 SIM 卡），<strong>先把环境弄对再注册账号</strong></li>
+          <li>买韩国 VPS + 域名，发我配置；连上后测一下 IP 风险分</li>
           <li>用谷歌邮箱注册 <strong>TikTok、Instagram、YouTube、LinkedIn</strong>（都不需要韩国手机号）</li>
-          <li>买韩国 VPS + 域名，发我配置</li>
           <li><strong>集中拍 20 条素材</strong>：车间全景、单件制作过程、质检、打包发货、产品特写</li>
           <li>做好韩语版账号资料（简介、头像、品牌名）</li>
         </ul>
