@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>韩国首饰出海运营手册</title>
+<meta name="description" content="源头工厂做韩国市场：平台选择、注册门槛、运营要点、侵权红线、服务器与IP方案">
+<style>
+:root{
+  --bg:#f7f8fa; --panel:#ffffff; --panel-2:#fbfbfd;
+  --text:#16181d; --text-2:#5a6472; --text-3:#8b95a3;
+  --line:#e4e7ec; --line-2:#eef0f4;
+  --accent:#8a6d2f; --accent-soft:#f4ecda;
+  --good:#1a7f4b; --good-soft:#e6f4ec;
+  --warn:#a8601a; --warn-soft:#fdf0e2;
+  --bad:#b4232a; --bad-soft:#fdeaea;
+  --mark:#ffe9a8;
+  --shadow:0 1px 2px rgba(16,24,40,.05), 0 1px 3px rgba(16,24,40,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1014; --panel:#171a20; --panel-2:#1c2028;
+    --text:#e8eaee; --text-2:#a2abb8; --text-3:#727d8c;
+    --line:#282d36; --line-2:#22262e;
+    --accent:#d4b062; --accent-soft:#2a2418;
+    --good:#4ec98a; --good-soft:#132a1f;
+    --warn:#e0a45e; --warn-soft:#2c2115;
+    --bad:#f0787e; --bad-soft:#2e1719;
+    --mark:#6b5514;
+    --shadow:0 1px 3px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1014; --panel:#171a20; --panel-2:#1c2028;
+  --text:#e8eaee; --text-2:#a2abb8; --text-3:#727d8c;
+  --line:#282d36; --line-2:#22262e;
+  --accent:#d4b062; --accent-soft:#2a2418;
+  --good:#4ec98a; --good-soft:#132a1f;
+  --warn:#e0a45e; --warn-soft:#2c2115;
+  --bad:#f0787e; --bad-soft:#2e1719;
+  --mark:#6b5514;
+  --shadow:0 1px 3px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:120px}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:0 20px}
+
+/* ---------- header ---------- */
+.hero{padding:56px 0 32px; border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:600; margin:0 0 12px}
+h1{font-size:clamp(28px,5vw,42px); line-height:1.25; margin:0 0 14px; letter-spacing:-.02em; font-weight:700}
+.sub{color:var(--text-2); font-size:16px; max-width:60ch; margin:0}
+.meta{margin-top:20px; font-size:13px; color:var(--text-3); display:flex; gap:16px; flex-wrap:wrap}
+
+/* ---------- search ---------- */
+.searchbar{
+  position:sticky; top:0; z-index:50; background:var(--bg);
+  border-bottom:1px solid var(--line); padding:12px 0;
+  backdrop-filter:saturate(180%) blur(12px);
+}
+.search-inner{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.search-field{position:relative; flex:1 1 280px}
+.search-field svg{position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-3)}
+#q{
+  width:100%; padding:11px 38px 11px 38px; font-size:15px;
+  border:1px solid var(--line); border-radius:10px; background:var(--panel); color:var(--text);
+  font-family:inherit; outline:none; transition:border-color .15s, box-shadow .15s;
+}
+#q:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft)}
+#clear{position:absolute; right:8px; top:50%; transform:translateY(-50%); border:0; background:transparent;
+  color:var(--text-3); cursor:pointer; font-size:18px; padding:4px 8px; display:none; line-height:1; border-radius:6px}
+#clear:hover{background:var(--line-2); color:var(--text)}
+.count{font-size:13px; color:var(--text-3); white-space:nowrap}
+.themebtn{border:1px solid var(--line); background:var(--panel); color:var(--text-2); border-radius:10px;
+  padding:10px 12px; cursor:pointer; font-size:14px; line-height:1; font-family:inherit}
+.themebtn:hover{border-color:var(--accent); color:var(--accent)}
+
+.chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
+.chip{
+  border:1px solid var(--line); background:var(--panel); color:var(--text-2);
+  border-radius:999px; padding:5px 12px; font-size:13px; cursor:pointer; font-family:inherit;
+  transition:.15s; white-space:nowrap;
+}
+.chip:hover{border-color:var(--accent); color:var(--accent)}
+.chip.on{background:var(--accent); border-color:var(--accent); color:#fff}
+:root[data-theme="dark"] .chip.on{color:#16181d}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .chip.on{color:#16181d}
+}
+
+/* ---------- nav ---------- */
+nav.toc{display:flex; gap:4px; flex-wrap:wrap; padding:14px 0 0}
+nav.toc a{
+  font-size:13px; color:var(--text-2); text-decoration:none; padding:5px 10px;
+  border-radius:7px; border:1px solid transparent;
+}
+nav.toc a:hover{background:var(--panel); border-color:var(--line); color:var(--text)}
+
+/* ---------- sections ---------- */
+section{padding:44px 0 8px; border-top:1px solid var(--line-2)}
+section:first-of-type{border-top:0}
+.sec-head{margin-bottom:22px}
+.sec-num{font-size:12px; font-weight:700; color:var(--accent); letter-spacing:.1em}
+h2{font-size:23px; margin:4px 0 8px; letter-spacing:-.01em; font-weight:700}
+.sec-desc{color:var(--text-2); font-size:14.5px; margin:0; max-width:70ch}
+
+/* ---------- cards ---------- */
+.grid{display:grid; gap:14px}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.card{
+  background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  padding:20px; box-shadow:var(--shadow);
+}
+.card.hit{border-color:var(--accent); box-shadow:0 0 0 2px var(--accent-soft)}
+.card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:6px}
+.card h3{font-size:17px; margin:0; font-weight:700; display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.kr{font-size:13px; color:var(--text-3); font-weight:500}
+.stars{color:var(--accent); font-size:13px; letter-spacing:1px; white-space:nowrap}
+.tagline{color:var(--text-2); font-size:14px; margin:2px 0 14px}
+
+.badges{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px}
+.badge{font-size:12px; padding:3px 9px; border-radius:6px; font-weight:600; white-space:nowrap}
+.b-good{background:var(--good-soft); color:var(--good)}
+.b-warn{background:var(--warn-soft); color:var(--warn)}
+.b-bad{background:var(--bad-soft); color:var(--bad)}
+.b-info{background:var(--accent-soft); color:var(--accent)}
+
+.block{margin-top:14px}
+.block-t{font-size:12.5px; font-weight:700; letter-spacing:.04em; margin-bottom:7px; display:flex; align-items:center; gap:6px}
+.block-t.do{color:var(--good)}
+.block-t.dont{color:var(--bad)}
+.block ul{margin:0; padding-left:18px}
+.block li{margin-bottom:5px; font-size:14px; color:var(--text-2)}
+.block li strong{color:var(--text); font-weight:600}
+.block li::marker{color:var(--text-3)}
+
+/* ---------- table ---------- */
+.tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--panel); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:800px; font-size:14px}
+th{
+  text-align:left; padding:12px 14px; background:var(--panel-2); font-weight:700; font-size:12.5px;
+  color:var(--text-2); border-bottom:1px solid var(--line); white-space:nowrap; letter-spacing:.03em;
+}
+td{padding:12px 14px; border-bottom:1px solid var(--line-2); vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--panel-2)}
+tr.hit td{background:var(--accent-soft)}
+td.pf{font-weight:600; white-space:nowrap}
+.dot{display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px; vertical-align:middle}
+.d-good{background:var(--good)} .d-warn{background:var(--warn)} .d-bad{background:var(--bad)}
+
+/* ---------- callouts ---------- */
+.callout{border-radius:12px; padding:18px 20px; border:1px solid; margin:0 0 14px}
+.callout.key{background:var(--accent-soft); border-color:var(--accent); }
+.callout.danger{background:var(--bad-soft); border-color:var(--bad)}
+.callout.ok{background:var(--good-soft); border-color:var(--good)}
+.callout h4{margin:0 0 8px; font-size:15px; font-weight:700}
+.callout.key h4{color:var(--accent)}
+.callout.danger h4{color:var(--bad)}
+.callout.ok h4{color:var(--good)}
+.callout p{margin:0 0 6px; font-size:14.5px}
+.callout p:last-child{margin-bottom:0}
+.callout ul{margin:6px 0 0; padding-left:18px; font-size:14.5px}
+.callout li{margin-bottom:4px}
+
+/* ---------- steps ---------- */
+.steps{counter-reset:s; display:grid; gap:12px}
+.step{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px 16px 56px;
+  position:relative; box-shadow:var(--shadow)}
+.step::before{
+  counter-increment:s; content:counter(s);
+  position:absolute; left:18px; top:16px; width:26px; height:26px; border-radius:50%;
+  background:var(--accent); color:#fff; display:grid; place-items:center; font-size:13px; font-weight:700;
+}
+.step h4{margin:0 0 4px; font-size:15px; font-weight:700}
+.step p{margin:0; font-size:14px; color:var(--text-2)}
+
+/* ---------- price ---------- */
+.plans{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.plan{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; box-shadow:var(--shadow)}
+.plan.best{border-color:var(--accent); border-width:2px}
+.plan .tier{font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--text-3); text-transform:uppercase}
+.plan.best .tier{color:var(--accent)}
+.plan .price{font-size:27px; font-weight:700; margin:8px 0 2px; letter-spacing:-.02em}
+.plan .per{font-size:13px; color:var(--text-3); font-weight:400}
+.plan .who{font-size:13.5px; color:var(--text-2); margin:8px 0 12px; padding-bottom:12px; border-bottom:1px solid var(--line-2)}
+.plan ul{margin:0; padding-left:17px; font-size:13.5px; color:var(--text-2)}
+.plan li{margin-bottom:4px}
+
+a.ext{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
+a.ext:hover{border-bottom-color:var(--accent)}
+
+mark{background:var(--mark); color:inherit; border-radius:3px; padding:0 2px}
+
+.empty{display:none; text-align:center; padding:60px 20px; color:var(--text-3)}
+.empty.show{display:block}
+.empty strong{color:var(--text); display:block; font-size:17px; margin-bottom:6px}
+
+footer{margin-top:56px; padding:28px 0 48px; border-top:1px solid var(--line); color:var(--text-3); font-size:13px}
+footer p{margin:0 0 6px}
+
+@media(max-width:640px){
+  .hero{padding:36px 0 24px}
+  .card{padding:16px}
+  section{padding:34px 0 4px}
+  nav.toc{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">源头工厂 · 韩国市场</p>
+    <h1>韩国首饰出海运营手册</h1>
+    <p class="sub">从零开始做韩国市场：该做哪些平台、注册要不要韩国手机号、每个平台怎么发、什么内容会踩侵权红线、服务器和 IP 怎么买。全部结论直给，不绕弯。</p>
+    <div class="meta">
+      <span>更新：2026 年 8 月</span>
+      <span>定位：找韩国零售 / 批发客户</span>
+      <span>适用：中国源头工厂 / 无韩国实体</span>
+    </div>
+  </header>
+</div>
+
+<div class="searchbar">
+  <div class="wrap">
+    <div class="search-inner">
+      <div class="search-field">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="搜索关键词：TikTok、手机号、住宅IP、侵权、域名、Naver…" autocomplete="off">
+        <button id="clear" title="清空">×</button>
+      </div>
+      <span class="count" id="count"></span>
+      <button class="themebtn" id="theme" title="切换主题">◐</button>
+    </div>
+    <div class="chips" id="chips">
+      <button class="chip" data-k="不需要韩国手机号">免手机号可注册</button>
+      <button class="chip" data-k="谷歌">谷歌账号能登</button>
+      <button class="chip" data-k="批发">找批发客户</button>
+      <button class="chip" data-k="侵权">侵权红线</button>
+      <button class="chip" data-k="住宅IP">IP / 服务器</button>
+      <button class="chip" data-k="域名">域名</button>
+      <button class="chip" data-k="韩语">韩语要求</button>
+    </div>
+    <nav class="toc">
+      <a href="#s1">① 一句话结论</a>
+      <a href="#s2">② 平台总表</a>
+      <a href="#s3">③ 各平台运营要点</a>
+      <a href="#s4">④ B2B 批发专线</a>
+      <a href="#s5">⑤ 侵权红线</a>
+      <a href="#s6">⑥ 服务器与 IP</a>
+      <a href="#s7">⑦ 域名</a>
+      <a href="#s8">⑧ 搭建步骤</a>
+      <a href="#s9">⑨ 30 天计划</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+<div class="empty" id="empty">
+  <strong>没找到相关内容</strong>
+  换个关键词试试，比如「TikTok」「Naver」「代理」「成本」
+</div>
+
+<!-- ============ 1 ============ -->
+<section id="s1">
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <h2>先看这一段：一句话结论</h2>
+    <p class="sec-desc">如果只有 3 分钟，看完这一节就够做决定了。</p>
+  </div>
+
+  <div class="callout key searchable" data-tags="结论 优先级 顺序 不需要韩国手机号 谷歌 邮箱">
+    <h4>核心判断：先做「不需要韩国手机号」的平台，别一上来就卡在实名认证上</h4>
+    <p><strong>能用邮箱或谷歌账号直接注册的（马上就能做）：</strong>TikTok、Instagram、YouTube、Threads、Pinterest、LinkedIn。这 6 个平台不需要韩国手机号，今天就能开干。</p>
+    <p><strong>需要韩国手机号或韩国营业执照的（放到第二阶段）：</strong>KakaoTalk 品牌频道、Naver 智能商店、도매꾹 等本土 B2B 平台。这些要么找韩国合作方，要么等你有客户了再解决。</p>
+    <p><strong>你的最大优势是「源头工厂」，不是「款式多」。</strong>韩国买家最缺的是可信的中国工厂，所以内容主线应该是车间、工艺、产能、质检，而不是纯产品图。</p>
+  </div>
+
+  <div class="grid two">
+    <div class="card searchable" data-tags="优先级 第一阶段 TikTok Instagram YouTube 免费 零成本">
+      <h3>第一阶段（第 1 个月）</h3>
+      <p class="tagline">零门槛起量，验证内容方向</p>
+      <div class="block">
+        <ul>
+          <li><strong>TikTok</strong> — 起量最快，韩国年轻人和小店主都在刷</li>
+          <li><strong>Instagram</strong> — 韩国做首饰生意的人真正泡的地方，主动私信开发客户</li>
+          <li><strong>YouTube Shorts</strong> — 复用 TikTok 素材，零成本多一个渠道</li>
+          <li><strong>LinkedIn</strong> — 找韩国采购经理、贸易公司，B2B 大单在这里</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card searchable" data-tags="优先级 第二阶段 Naver Kakao 韩国合作方 实名认证 도매꾹">
+      <h3>第二阶段（第 2–3 个月）</h3>
+      <p class="tagline">攻本土平台，需要解决身份问题</p>
+      <div class="block">
+        <ul>
+          <li><strong>Naver 博客 / 카페</strong> — 韩国搜索占 43.7%，做长期免费流量</li>
+          <li><strong>KakaoTalk 品牌频道</strong> — 韩国的「微信公众号」，客户沉淀最终归宿</li>
+          <li><strong>도매꾹 / 주얼토킹</strong> — 韩国本土批发平台，需营业执照</li>
+          <li>解决路径：找韩国合作方 / 代理公司，或注册韩国法人</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section id="s2">
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <h2>平台总表：注册门槛一览</h2>
+    <p class="sec-desc">最关心的两个问题——要不要韩国手机号、能不能用谷歌账号登录——都在这张表里。</p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th>平台</th>
+          <th>韩国用户规模</th>
+          <th>要韩国手机号吗</th>
+          <th>谷歌账号能登吗</th>
+          <th>对你的价值</th>
+          <th>优先级</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr class="searchable" data-tags="TikTok 틱톡 不需要韩国手机号 谷歌 邮箱 短视频 引流">
+          <td class="pf">TikTok<br><span class="kr">틱톡</span></td>
+          <td>约 1,100 万月活</td>
+          <td><span class="dot d-good"></span><strong>不需要</strong>，邮箱即可</td>
+          <td><span class="dot d-good"></span>可以</td>
+          <td>起量最快，引流到私信谈批发</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr class="searchable" data-tags="Instagram 인스타그램 不需要韩国手机号 谷歌 邮箱 私信 DM 开发客户 批发">
+          <td class="pf">Instagram<br><span class="kr">인스타그램</span></td>
+          <td>2,876 万（人口 54.4%）</td>
+          <td><span class="dot d-good"></span><strong>不需要</strong>，邮箱即可</td>
+          <td><span class="dot d-good"></span>可以（或 Facebook）</td>
+          <td>找韩国网店主 / 零售商最有效</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr class="searchable" data-tags="YouTube 유튜브 谷歌 不需要韩国手机号 工厂纪录片 信任">
+          <td class="pf">YouTube<br><span class="kr">유튜브</span></td>
+          <td>4,848 万（人口 83.1%）</td>
+          <td><span class="dot d-good"></span><strong>不需要</strong></td>
+          <td><span class="dot d-good"></span>就是谷歌账号</td>
+          <td>工厂实力背书，长尾搜索流量</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr class="searchable" data-tags="LinkedIn 링크드인 不需要韩国手机号 谷歌 邮箱 B2B 采购 buying office 批发">
+          <td class="pf">LinkedIn<br><span class="kr">링크드인</span></td>
+          <td>约 300 万（商务人群）</td>
+          <td><span class="dot d-good"></span><strong>不需要</strong>，邮箱即可</td>
+          <td><span class="dot d-good"></span>可以</td>
+          <td>直接触达采购经理、贸易公司</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr class="searchable" data-tags="Threads 스레드 不需要韩国手机号 Instagram">
+          <td class="pf">Threads<br><span class="kr">스레드</span></td>
+          <td>约 600 万，增长快</td>
+          <td><span class="dot d-good"></span><strong>不需要</strong></td>
+          <td><span class="dot d-good"></span>用 IG 账号直接开</td>
+          <td>顺手同步，零额外成本</td>
+          <td>★★★☆☆</td>
+        </tr>
+        <tr class="searchable" data-tags="Pinterest 不需要韩国手机号 谷歌 款式图册 买手 设计师">
+          <td class="pf">Pinterest</td>
+          <td>韩国本土用户少</td>
+          <td><span class="dot d-good"></span><strong>不需要</strong></td>
+          <td><span class="dot d-good"></span>可以</td>
+          <td>全球买手找款，长尾能吃几年</td>
+          <td>★★★☆☆</td>
+        </tr>
+        <tr class="searchable" data-tags="Naver 블로그 네이버 博客 SEO 搜索 实名认证 护照 韩国手机号 半">
+          <td class="pf">Naver 博客<br><span class="kr">네이버 블로그</span></td>
+          <td>人口 21.7% 在用</td>
+          <td><span class="dot d-warn"></span>注册可用海外号；<strong>实名认证</strong>需韩国号或护照认证</td>
+          <td><span class="dot d-bad"></span>不行，需 Naver 自有账号</td>
+          <td>韩国搜索占 43.7%，免费长期流量</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr class="searchable" data-tags="Naver 카페 네이버 카페 社群 小老板 批发 客户">
+          <td class="pf">Naver 카페<br><span class="kr">네이버 카페</span></td>
+          <td>韩国最大社群体系</td>
+          <td><span class="dot d-warn"></span>同上，需 Naver 账号</td>
+          <td><span class="dot d-bad"></span>不行</td>
+          <td>韩国小老板扎堆，直接找零售客户</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr class="searchable" data-tags="Naver BAND 밴드 批发群 社群 中老年 手机号">
+          <td class="pf">Naver BAND<br><span class="kr">밴드</span></td>
+          <td>人口 28.6%（第 4 大）</td>
+          <td><span class="dot d-warn"></span>需手机号（海外号可试）</td>
+          <td><span class="dot d-bad"></span>不行</td>
+          <td>韩国批发圈有大量「도매 밴드」</td>
+          <td>★★★☆☆</td>
+        </tr>
+        <tr class="searchable" data-tags="KakaoTalk 카카오톡 카카오 채널 品牌频道 韩国手机号 营业执照 实名 必须">
+          <td class="pf">KakaoTalk 频道<br><span class="kr">카카오톡 채널</span></td>
+          <td>4,910 万（网民 97.1%）</td>
+          <td><span class="dot d-bad"></span><strong>商用频道必须</strong>韩国实名 / 营业执照</td>
+          <td><span class="dot d-bad"></span>不行</td>
+          <td>客户沉淀最终归宿，但门槛最高</td>
+          <td>★★★★☆<br>（第二阶段）</td>
+        </tr>
+        <tr class="searchable" data-tags="도매꾹 domeggook 도매매 B2B 批发 营业执照 사업자등록증 韩国本土">
+          <td class="pf">도매꾹 / 도매매<br><span class="kr">domeggook</span></td>
+          <td>韩国最大 B2B 批发平台</td>
+          <td><span class="dot d-bad"></span>需<strong>韩国营业执照</strong></td>
+          <td><span class="dot d-bad"></span>不行</td>
+          <td>直接对接韩国网店主、批发商</td>
+          <td>★★★★☆<br>（需合作方）</td>
+        </tr>
+        <tr class="searchable" data-tags="주얼토킹 jeweltalking 珠宝 首饰 专业 B2B 批发 营业执照">
+          <td class="pf">주얼토킹<br><span class="kr">jeweltalking</span></td>
+          <td>韩国珠宝首饰专业 B2B</td>
+          <td><span class="dot d-bad"></span>需韩国营业执照</td>
+          <td><span class="dot d-bad"></span>不行</td>
+          <td>行业最垂直，客户质量最高</td>
+          <td>★★★★☆<br>（需合作方）</td>
+        </tr>
+        <tr class="searchable" data-tags="Naver 스마트스토어 智能商店 SmartStore 外国人 限制 营业执照 居留">
+          <td class="pf">Naver 智能商店<br><span class="kr">스마트스토어</span></td>
+          <td>韩国最大电商入口</td>
+          <td><span class="dot d-bad"></span>只对<strong>在韩居留</strong>且有营业执照的外国人开放</td>
+          <td><span class="dot d-bad"></span>不行</td>
+          <td>零售出货，但你现在进不去</td>
+          <td>★★☆☆☆<br>（暂不考虑）</td>
+        </tr>
+        <tr class="searchable" data-tags="Coupang 쿠팡 跨境 卖家 Global Selling 中国卖家 电商">
+          <td class="pf">Coupang<br><span class="kr">쿠팡</span></td>
+          <td>韩国第一电商</td>
+          <td><span class="dot d-warn"></span>走「跨境卖家」通道，中国主体可入驻</td>
+          <td><span class="dot d-bad"></span>不行</td>
+          <td>做零售走量，需备货和售后能力</td>
+          <td>★★★☆☆</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout key searchable" data-tags="TikTok Shop 韩国站 2026 Q3 什么时候开 跨境 电商" style="margin-top:14px">
+    <h4>重要时间点：TikTok Shop 韩国站预计 2026 年第三季度才开</h4>
+    <p>也就是说，<strong>现在在 TikTok 上做韩国市场，只能引流到站外成交（私信、邮件、官网）</strong>，站内还买不了东西。这反而是好事——现在进场是抢在开店之前把账号和粉丝养起来，等开店那天你已经有基础了。</p>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section id="s3">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <h2>各平台运营要点</h2>
+    <p class="sec-desc">每个平台只写三件事：怎么注册、该怎么做、千万别做什么。</p>
+  </div>
+
+  <div class="grid two">
+
+    <div class="card searchable" data-tags="TikTok 틱톡 短视频 韩语 字幕 发布时间 养号 不需要韩国手机号 谷歌 引流 限流 封号">
+      <div class="card-top">
+        <h3>TikTok <span class="kr">틱톡</span></h3>
+        <span class="stars">★★★★★</span>
+      </div>
+      <p class="tagline">起量最快的流量入口，优先级第一</p>
+      <div class="badges">
+        <span class="badge b-good">邮箱 / 谷歌可注册</span>
+        <span class="badge b-good">不需要韩国手机号</span>
+        <span class="badge b-warn">需韩国 IP</span>
+      </div>
+      <div class="block">
+        <div class="block-t do">✓ 该怎么做</div>
+        <ul>
+          <li><strong>人设定成「中国源头工厂」</strong>：韩语 ID、韩语简介、头像用车间或产品实拍，不要用 logo</li>
+          <li><strong>内容公式</strong>：3 秒成品特写 → 制作过程（打磨 / 电镀 / 镶石）→ 价格锚点（「零售 12 万韩元，我们出厂 2 万」）→ 引导私信</li>
+          <li><strong>全韩语字幕</strong>，机翻后必须人工校一遍。翻译腔在韩国等于没人看</li>
+          <li><strong>发布时间</strong>：韩国时间 19:00–23:00（韩国比中国快 1 小时）</li>
+          <li><strong>前 10 条视频决定系统给你贴的标签</strong>，这期间只发一个主题，不要中韩混发</li>
+          <li>主页 bio 放官网链接或邮箱，接批发询盘</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t dont">✕ 千万别做</div>
+        <ul>
+          <li>新号第一周就发联系方式、发外链 → 判定引流，直接限流</li>
+          <li>用中文文案、中文水印 → 系统会推给中国用户，白做</li>
+          <li>频繁换 IP、换设备 → <strong>一个账号绑定一个固定网络环境</strong></li>
+          <li>别指望站内成交，韩国站要 2026 Q3 才开</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="Instagram 인스타그램 私信 DM 开发客户 标签 hashtag 韩语 Reels 批发 不需要韩国手机号 谷歌">
+      <div class="card-top">
+        <h3>Instagram <span class="kr">인스타그램</span></h3>
+        <span class="stars">★★★★★</span>
+      </div>
+      <p class="tagline">找韩国零售 / 网店客户最有效的地方</p>
+      <div class="badges">
+        <span class="badge b-good">邮箱 / 谷歌可注册</span>
+        <span class="badge b-good">不需要韩国手机号</span>
+        <span class="badge b-info">主动开发客户</span>
+      </div>
+      <div class="block">
+        <div class="block-t do">✓ 该怎么做</div>
+        <ul>
+          <li><strong>主页当「目录」用</strong>：九宫格按品类排（은반지 / 귀걸이 / 목걸이），精选动态放「도매안내」「배송」「인증」</li>
+          <li><strong>Reels 拉新 + 静态图沉淀</strong>，Reels 每周至少 3 条</li>
+          <li><strong>韩语标签必备</strong>：#액세서리도매 #쥬얼리도매 #실버925 #종로도매 #쇼핑몰창업 #위탁판매</li>
+          <li><strong>主动私信开发</strong>：搜上面这些标签，找韩国小网店主，<strong>每天 20–30 条精准私信</strong>，一条一条写，别群发模板</li>
+          <li>转成商务账号，绑 Facebook 主页，为以后开 Instagram Shop 铺路</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t dont">✕ 千万别做</div>
+        <ul>
+          <li>私信一上来就甩价格表 → 先发样品图 + 最小起订量，勾起兴趣再报价</li>
+          <li>新号一天狂关注 / 狂私信 → <strong>一天别超 30 个动作</strong>，否则限权</li>
+          <li>用大牌名做标签蹭流量 → 品牌方投诉一次就扣分</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="YouTube 유튜브 Shorts 工厂纪录片 谷歌账号 韩语字幕 搜索 信任 背书">
+      <div class="card-top">
+        <h3>YouTube <span class="kr">유튜브</span></h3>
+        <span class="stars">★★★★☆</span>
+      </div>
+      <p class="tagline">韩国渗透率 83%，做信任背书</p>
+      <div class="badges">
+        <span class="badge b-good">谷歌账号直接用</span>
+        <span class="badge b-good">零注册门槛</span>
+      </div>
+      <div class="block">
+        <div class="block-t do">✓ 该怎么做</div>
+        <ul>
+          <li><strong>Shorts 复用 TikTok 素材</strong>（先去掉 TikTok 水印），一份内容两个平台</li>
+          <li><strong>长视频做「工厂纪录片」</strong>：日产能多少、质检怎么做、电镀几个微米——这是 B2B 客户最想看、最能建立信任的内容</li>
+          <li>标题和简介用韩语关键词，同时上传韩语字幕文件（别只靠自动字幕）</li>
+          <li>简介栏放官网 + 邮箱</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t dont">✕ 千万别做</div>
+        <ul>
+          <li>搬运带别人水印的内容 → 判重复内容，无法开收益也会限流</li>
+          <li>纯标题党 → 完播率一低，后面的视频都推不出去</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="Naver 블로그 네이버 博客 SEO C-Rank 沙盒 实名认证 护照 韩国手机号 长图文 搜索">
+      <div class="card-top">
+        <h3>Naver 博客 <span class="kr">네이버 블로그</span></h3>
+        <span class="stars">★★★★☆</span>
+      </div>
+      <p class="tagline">韩国搜索占 43.7%，免费流量的长期地基</p>
+      <div class="badges">
+        <span class="badge b-warn">需 Naver 账号</span>
+        <span class="badge b-warn">实名认证需韩国号或护照</span>
+        <span class="badge b-info">见效慢但持久</span>
+      </div>
+      <div class="block">
+        <div class="block-t do">✓ 该怎么做</div>
+        <ul>
+          <li><strong>注册可以用海外手机号</strong>；2026 年 6 月起 Naver 支持护照认证，解锁部分功能</li>
+          <li><strong>写长图文</strong>：1500 字以上 + 10 张以上原创图，锁定「악세사리 도매 사입」这类搜索词</li>
+          <li><strong>每周更新 3–5 篇</strong>。Naver 的 C-Rank 算法看更新频率和停留时长，断更等于前功尽弃</li>
+          <li>新号有约 3 个月「沙盒期」搜不到，这是正常的，别放弃</li>
+          <li>文末放 KakaoTalk 频道或邮箱</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t dont">✕ 千万别做</div>
+        <ul>
+          <li>同一篇改几个字反复发 → Naver 查重极严，直接降权</li>
+          <li>一篇文章塞满外链 → 判广告，搜索里直接消失</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="Naver 카페 네이버 카페 社群 小老板 等级 软性 广告 秒踢 批发 客户">
+      <div class="card-top">
+        <h3>Naver 카페 <span class="kr">네이버 카페</span></h3>
+        <span class="stars">★★★★☆</span>
+      </div>
+      <p class="tagline">韩国小老板扎堆的地方，客户密度最高</p>
+      <div class="badges">
+        <span class="badge b-warn">需 Naver 账号</span>
+        <span class="badge b-info">高质量客户</span>
+      </div>
+      <div class="block">
+        <div class="block-t do">✓ 该怎么做</div>
+        <ul>
+          <li><strong>加这几类카페</strong>：「쇼핑몰 창업」「온라인 창업」「액세서리 도매」「위탁판매」</li>
+          <li><strong>先混等级</strong>：很多카페要求等级达标才能发帖，前两周只回帖、点赞、答疑</li>
+          <li><strong>用「经验分享」的方式软性介绍</strong>，比如发一篇「중국 공장 사입 후기」（中国工厂进货经历），比硬广有效 10 倍</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t dont">✕ 千万别做</div>
+        <ul>
+          <li>新号进去直接发广告 → 秒踢，而且 IP 会被카페拉黑</li>
+          <li>一个 IP 登多个 Naver 账号 → 关联封号</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="KakaoTalk 카카오톡 채널 品牌频道 微信公众号 韩国手机号 营业执照 实名认证 合作方 代理">
+      <div class="card-top">
+        <h3>KakaoTalk 频道 <span class="kr">카카오톡 채널</span></h3>
+        <span class="stars">★★★★☆</span>
+      </div>
+      <p class="tagline">韩国的「微信公众号」，客户沉淀的终点站</p>
+      <div class="badges">
+        <span class="badge b-bad">需韩国实名 / 营业执照</span>
+        <span class="badge b-info">第二阶段再做</span>
+      </div>
+      <div class="block">
+        <div class="block-t do">✓ 该怎么做</div>
+        <ul>
+          <li>个人版 KakaoTalk 可以用海外手机号注册，但<strong>商用频道和实名认证必须绑韩国身份</strong>（韩国身份证号或外国人登录证）</li>
+          <li><strong>现实路径</strong>：找韩国合作方 / 代理公司代开，或长期看在韩国注册法人</li>
+          <li>开通后当客户群管理工具用：发新品、发报价、一对一谈单</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t dont">✕ 千万别做</div>
+        <ul>
+          <li><strong>不要一开始就死磕这个</strong> → 先把 TikTok / IG 做起来，有客户了再解决 Kakao，顺序反了会浪费两个月</li>
+          <li>不要买来路不明的韩国实名账号 → 违反平台条款，随时被封且钱拿不回来</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="LinkedIn 링크드인 B2B 采购经理 MD buying office 贸易公司 大单 批发 不需要韩国手机号">
+      <div class="card-top">
+        <h3>LinkedIn <span class="kr">링크드인</span></h3>
+        <span class="stars">★★★★☆</span>
+      </div>
+      <p class="tagline">B2B 大单最可能出现的地方</p>
+      <div class="badges">
+        <span class="badge b-good">邮箱注册</span>
+        <span class="badge b-good">不需要韩国手机号</span>
+        <span class="badge b-info">被严重低估</span>
+      </div>
+      <div class="block">
+        <div class="block-t do">✓ 该怎么做</div>
+        <ul>
+          <li><strong>搜索关键词</strong>：「주얼리 MD」「액세서리 구매팀」「buying office Korea」「sourcing manager Korea」</li>
+          <li><strong>个人号 + 公司主页同步做</strong>。个人号发内容，公司页放工厂资料</li>
+          <li>内容主线：产线视频、认证证书、出货实拍、行业趋势观察</li>
+          <li>连接请求带一句话说明，别空白邀请</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t dont">✕ 千万别做</div>
+        <ul>
+          <li>刚连上就发长篇推销 → 韩国商务人群很反感，先互动几次再谈</li>
+          <li>资料页留空 → LinkedIn 上没人跟资料不全的人做生意</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="Threads 스레드 Pinterest 补充 零成本 款式图册 买手">
+      <div class="card-top">
+        <h3>Threads + Pinterest</h3>
+        <span class="stars">★★★☆☆</span>
+      </div>
+      <p class="tagline">顺手做的补充位，不用花额外精力</p>
+      <div class="badges">
+        <span class="badge b-good">零门槛</span>
+        <span class="badge b-info">顺手同步</span>
+      </div>
+      <div class="block">
+        <div class="block-t do">✓ 该怎么做</div>
+        <ul>
+          <li><strong>Threads</strong>：用 IG 账号直接开，把 IG 内容顺手同步，多发纯文字的行业观察（韩国人在这上面爱聊天）</li>
+          <li><strong>Pinterest</strong>：把产品图做成「款式图册」按主题分板，全球买手和设计师会用它找款，<strong>长尾流量能吃好几年</strong></li>
+          <li>两个平台都不用每天管，一周整理一次即可</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section id="s4">
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <h2>B2B 批发专线：真正出大单的渠道</h2>
+    <p class="sec-desc">社交平台负责获客，但批发大单往往来自这些地方。你是源头工厂，这一节的价值可能超过前面所有平台加起来。</p>
+  </div>
+
+  <div class="grid two">
+    <div class="card searchable" data-tags="도매꾹 domeggook 도매매 업스토어 주얼토킹 韩国 本土 B2B 批发 平台 营业执照 合作方">
+      <h3>韩国本土 B2B 平台</h3>
+      <p class="tagline">需要韩国营业执照，建议找合作方</p>
+      <div class="block">
+        <ul>
+          <li><strong>도매꾹 / 도매매</strong>（<a class="ext" href="https://domeggook.com" target="_blank" rel="noopener">domeggook.com</a>）— 韩国最大 B2B 批发平台，无数韩国网店主在这里找货源</li>
+          <li><strong>주얼토킹</strong>（<a class="ext" href="https://www.jeweltalking.com" target="_blank" rel="noopener">jeweltalking.com</a>）— 韩国代表性的<strong>珠宝首饰专业批发平台</strong>，最垂直，客户质量最高</li>
+          <li><strong>업스토어</strong>（<a class="ext" href="https://www.upstore.kr" target="_blank" rel="noopener">upstore.kr</a>）— 连接约 3,000 家批发商</li>
+          <li><strong>도매의신</strong>（domesin.com）— B2B 代发货平台</li>
+          <li>进入方式：找韩国代理公司挂靠，或与韩国贸易商合作，由对方开店你供货</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="KOTRA buyKOREA 阿里国际站 Global Sources 官方 免费 询盘 出口 批发">
+      <h3>官方与国际 B2B 渠道</h3>
+      <p class="tagline">免费或低成本，能直接拿到询盘</p>
+      <div class="block">
+        <ul>
+          <li><strong>buyKOREA</strong>（<a class="ext" href="https://www.buykorea.org" target="_blank" rel="noopener">buykorea.org</a>）— KOTRA 韩国贸易投资振兴公社的官方平台，<strong>免费注册</strong>，能收到韩国买家询盘，最被低估的渠道</li>
+          <li><strong>阿里巴巴国际站</strong> — 韩国采购商常用，做韩语版页面 + 韩国关键词投放</li>
+          <li><strong>Global Sources</strong> — 韩国中大型买手常用</li>
+          <li><strong>中国驻韩使馆经商处 / 各地商会</strong> — 会发布采购信息，也能对接韩国华商圈</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="종로 Jongno 首尔 线下 展会 珠宝展 서울국제주얼리페어 采购商 批发 20-40%">
+      <h3>线下：韩国珠宝批发的心脏</h3>
+      <p class="tagline">如果能去一趟韩国，效率是线上的 10 倍</p>
+      <div class="block">
+        <ul>
+          <li><strong>首尔 종로 3가 / 4가 귀금속 상가</strong> — 韩国珠宝批发的核心区，成百上千家批发商和零售店聚集，价格比韩国其他地方低 20–40%。这里的老板就是你的目标客户</li>
+          <li><strong>서울국제주얼리페어</strong>（首尔国际珠宝展）— 韩国最大的行业展会，一次能见到几百个采购方</li>
+          <li><strong>동대문 시장</strong> — 饰品批发也很活跃，偏时尚配饰</li>
+          <li>操作建议：先线上加到几个종로的老板，再约线下见面，成交率极高</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="询盘 转化 报价 MOQ 起订量 打样 付款 物流 关税 韩国 通关">
+      <h3>拿到询盘后，怎么谈成</h3>
+      <p class="tagline">韩国买家最在意的几件事</p>
+      <div class="block">
+        <ul>
+          <li><strong>准备韩语版报价单</strong>：FOB 价、MOQ（最小起订量）、打样费、交期，一页说清</li>
+          <li><strong>MOQ 放低一点起步</strong>：韩国小店主订量不大，先用 50–100 件的低门槛拿下第一单，后面再涨</li>
+          <li><strong>主动说清关税和通关</strong>：韩国进口关税 + 10% 增值税，谁承担要写明。韩国客户对这个特别敏感</li>
+          <li><strong>提供成分证明</strong>：925 银、18K 电镀厚度、镍含量检测。韩国对饰品的镍释放量有要求，能出检测报告是很强的加分项</li>
+          <li><strong>物流方案</strong>：中韩海运 3–5 天、空运 2–3 天，给客户两个选项</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section id="s5">
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <h2>侵权红线：发大牌首饰会不会出事</h2>
+    <p class="sec-desc">你问的是咨询，这里就把事实讲清楚。</p>
+  </div>
+
+  <div class="callout danger searchable" data-tags="侵权 大牌 商标 会不会 结论 封号 刑事 海关">
+    <h4>直接回答：会侵权。而且风险不只是封号。</h4>
+    <p>只要你的广告里出现了品牌名、品牌 logo、品牌官方图片，或者复制了有设计权的经典款式，无论你标不标「仿」「同款」「代购」，在法律上都构成侵权。写「本店非正品」这类免责声明<strong>没有任何法律效力</strong>。</p>
+  </div>
+
+  <div class="grid two">
+    <div class="card searchable" data-tags="侵权 风险 三层 平台 封号 民事 赔偿 刑事 海关 관세청 상표법 부정경쟁방지법">
+      <h3>三层风险，从轻到重</h3>
+      <div class="block">
+        <ul>
+          <li><strong>① 平台层（几乎 100% 会发生）</strong><br>TikTok、Meta、Naver 都有品牌方投诉通道。品牌方投诉 → 视频删除 + 账号扣分，累计几次直接封号。你辛苦养的号一夜清零</li>
+          <li><strong>② 民事层</strong><br>韩国《商标法》（상표법）和《不正当竞争防止法》（부정경쟁방지법），品牌方可要求停止侵权 + 损害赔偿</li>
+          <li><strong>③ 刑事与海关（最狠）</strong><br>韩国商标侵权可处 7 年以下惩役或 1 亿韩元以下罚金。韩国海关（관세청）对仿冒品直接扣押销毁，<strong>而且收货人也就是你的韩国客户也会被追责</strong>——这等于当场毁掉客户关系</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="侵权 红线 禁止 logo 品牌名 1:1 레플리카 정품급 关键词 标签">
+      <h3>红线清单：这些绝对不能碰</h3>
+      <div class="block">
+        <div class="block-t dont">✕ 一律不要出现</div>
+        <ul>
+          <li>标题、标签、关键词里出现品牌名（Cartier、티파니、불가리、샤넬 等，中英韩文都算）</li>
+          <li>品牌 logo、官方产品图、包装盒、证书、丝绒袋</li>
+          <li>复制有设计专利或著作权的经典款（如某品牌的螺丝纹手镯、字母系列）</li>
+          <li>「1:1」「동일 퀄리티」「정품급」「레플리카」「原单」「高仿」这类描述</li>
+          <li>用品牌名做对比（「像 XX 一样的设计」）也算蹭商誉</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="安全 绿线 原创 OEM ODM 925 18K 莫桑石 公有领域 定制 合规">
+      <h3>绿线：这些做法安全且更赚钱</h3>
+      <div class="block">
+        <div class="block-t do">✓ 放心做</div>
+        <ul>
+          <li><strong>自己的原创设计</strong>，以及客户来图定制（OEM / ODM）——这是你作为源头工厂的正牌武器</li>
+          <li><strong>公有领域的通用元素</strong>：素圈、单钻、珍珠、四叶草、莫比乌斯环等，但不要蹭任何品牌名</li>
+          <li><strong>用材质和工艺做卖点</strong>：925 纯银、18K 金电镀厚度、莫桑石 + GRA 证书、镍释放量检测报告</li>
+          <li><strong>定位成「공장 직영 OEM/ODM」</strong>（工厂直营代工）。这个定位拿到的批发客户质量，比蹭大牌高一个量级</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="建议 商业判断 护城河 自主品牌 长期 风险">
+      <h3>一句商业判断</h3>
+      <div class="block">
+        <ul>
+          <li>蹭大牌的生意，本质是<strong>用你最值钱的资产（供应链和工厂）去换一个随时会爆的雷</strong>。一次海关扣货，赔的不只是货款，是韩国客户对你的全部信任</li>
+          <li>做自主品牌 + OEM，前 3 个月起量慢，但客户会复购、会介绍同行、会签长期协议。做仿品的客户只会比价，而且随时消失</li>
+          <li>韩国买家里，真正有实力的（网店、品牌方、买手店）<strong>没有一个敢碰仿品</strong>——他们自己也会被追责。你做正品路线，才进得了这个圈子</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:13px; color:var(--text-3); margin-top:14px">以上是行业通行认知与公开法规的整理，不构成法律意见。真要打官司或有具体争议，请咨询中韩两地的知识产权律师。</p>
+</section>
+
+<!-- ============ 6 ============ -->
+<section id="s6">
+  <div class="sec-head">
+    <div class="sec-num">06</div>
+    <h2>服务器与 IP：要不要买家庭 IP</h2>
+    <p class="sec-desc">你问的这个问题最关键，先给判断，再给配置和价格。</p>
+  </div>
+
+  <div class="callout key searchable" data-tags="住宅IP 家庭IP 要不要买 判断 结论 机房IP IDC 矩阵 单账号">
+    <h4>专业判断：看你要做几个账号</h4>
+    <p><strong>只做 1–2 个 TikTok 账号、用手机发视频 → 不用买家庭 IP。</strong>一台韩国 VPS 自建节点（约 ¥45/月）就够了，关键是<strong>IP 固定不换</strong>。</p>
+    <p><strong>要做 3 个以上账号矩阵，或用电脑批量运营 → 必须买家庭 IP（住宅 IP）。</strong>没有例外。</p>
+    <p style="margin-top:10px"><strong>为什么？</strong>TikTok 的风控看三层：IP + 设备指纹 + 行为。VPS 给你的是数据中心 IP（IDC 段），本身信任分就低；再让多个账号共用同一个机房 IP，等于自己举报自己「这是批量号」。住宅 IP 是真实家庭宽带的 IP，在 TikTok 眼里就是一个正常韩国用户。</p>
+  </div>
+
+  <div class="grid two">
+    <div class="card searchable" data-tags="VPS 配置 韩国 首尔 LightNode Vultr Lightsail Kamatera 价格 2核2G 不要买高配">
+      <h3>韩国 VPS：买什么配置</h3>
+      <p class="tagline">做节点用，别买高配，纯浪费钱</p>
+      <div class="block">
+        <div class="block-t do">✓ 够用的配置</div>
+        <ul>
+          <li><strong>2 核 2G / 50G SSD / 1TB 流量</strong>就足够了。它的作用只是转发流量，不做计算</li>
+          <li>甚至 1 核 1G 都能跑，但 2G 内存更稳，不容易卡</li>
+          <li><strong>只有做直播推流转发时</strong>才需要 4 核 8G，你现在用不上</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t">推荐服务商（首尔机房）</div>
+        <ul>
+          <li><strong>LightNode</strong>（<a class="ext" href="https://www.lightnode.com" target="_blank" rel="noopener">lightnode.com</a>）— $7.71/月起，<strong>支持按小时计费</strong>，适合先买来测两天再决定。中文界面，支付宝可付</li>
+          <li><strong>Vultr</strong> 首尔 — $6/月（1核1G）/ $12（2核2G），全球老牌，稳定</li>
+          <li><strong>AWS Lightsail</strong> 首尔 — $5/月起，大厂线路，但注册需信用卡</li>
+          <li><strong>Kamatera</strong> — $4/月起，配置可自定义</li>
+          <li>韩国本土（Gabia / Cafe24 / KINX）IP 更「本地」，但要韩语沟通 + 实名，不建议现在碰</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="住宅IP 家庭IP 静态 ISP 代理 IPRoyal Proxy-Cheap NodeMaven DataImpulse Decodo 价格 GB 动态 轮换">
+      <h3>住宅 IP（家庭 IP）：怎么买</h3>
+      <p class="tagline">做矩阵才需要，一号一 IP</p>
+      <div class="block">
+        <div class="block-t">静态住宅 IP（推荐，养号用这个）</div>
+        <ul>
+          <li><strong>IPRoyal</strong> — 静态住宅约 $2.4–5 / 个 / 月</li>
+          <li><strong>Proxy-Cheap / NodeMaven</strong> — 韩国住宅 IP，约 $3–8 / 个 / 月</li>
+          <li>原则：<strong>一个账号绑一个固定 IP，永远不换</strong></li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t">按流量的动态住宅（不适合养号）</div>
+        <ul>
+          <li>DataImpulse 约 $1/GB，Decodo 约 $4/GB，Bright Data $8.4/GB 起</li>
+          <li>这类 IP 会轮换，<strong>TikTok 最讨厌 IP 乱跳</strong>，只适合做数据采集，别拿来养号</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-t">指纹浏览器（只有用电脑做多账号才需要）</div>
+        <ul>
+          <li>AdsPower / BitBrowser / 比特浏览器，约 $10–30/月</li>
+          <li><strong>纯手机运营的话，这一项可以跳过</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout ok searchable" data-tags="手机 运营 一号一环境 建议 实操" style="margin-top:14px">
+    <h4>实操建议：手机运营才是最稳的</h4>
+    <p>如果你只做 1–2 个号，<strong>最稳的方案是一台干净的手机（最好是新的或恢复出厂的）+ 韩国 VPS 节点</strong>。手机自带的真实设备指纹，比任何指纹浏览器都可信。等做到 5 个号以上，再上电脑 + 指纹浏览器 + 住宅 IP 池。</p>
+  </div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section id="s7">
+  <div class="sec-head">
+    <div class="sec-num">07</div>
+    <h2>域名：到底需不需要买</h2>
+    <p class="sec-desc">分两件事看，答案不一样。</p>
+  </div>
+
+  <div class="grid two">
+    <div class="card searchable" data-tags="域名 节点 VPN 需不需要 TLS CDN 换服务器">
+      <h3>① 做节点用 — 不是必需，但建议买</h3>
+      <div class="badges"><span class="badge b-warn">可选</span></div>
+      <div class="block">
+        <ul>
+          <li>直接用「IP + 端口」就能连，不买域名也能用</li>
+          <li><strong>买了的好处</strong>：① IP 万一被封，换台服务器改个解析就行，手机端不用重配 ② 能套 TLS + CDN，更隐蔽更稳定</li>
+          <li>成本约 ¥70/年，值这个钱</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card searchable" data-tags="域名 官网 落地页 批发 询盘 信任 建议 必须 转化">
+      <h3>② 做批发生意 — 强烈建议买</h3>
+      <div class="badges"><span class="badge b-good">建议买</span></div>
+      <div class="block">
+        <ul>
+          <li>TikTok / IG 主页放一个官网链接，<strong>比放邮箱专业 10 倍</strong></li>
+          <li>韩国买家在下单前一定会查你是不是真工厂。一个简单的产品目录站 + 车间照片，能大幅提高询盘转化</li>
+          <li>网站本身可以放 Cloudflare Pages，<strong>免费</strong>，只花域名钱</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tablewrap" style="margin-top:14px">
+    <table>
+      <thead>
+        <tr><th>注册商</th><th>.com 价格</th><th>续费</th><th>特点</th><th>建议</th></tr>
+      </thead>
+      <tbody>
+        <tr class="searchable" data-tags="Porkbun 域名 便宜 首选 隐私 SSL">
+          <td class="pf">Porkbun</td>
+          <td>约 $8–11/年</td>
+          <td><span class="dot d-good"></span>同价，不涨</td>
+          <td>免费 WHOIS 隐私 + 免费 SSL，界面简单</td>
+          <td><strong>首选</strong></td>
+        </tr>
+        <tr class="searchable" data-tags="Cloudflare Registrar 域名 成本价 最便宜 转入 不能注册">
+          <td class="pf">Cloudflare Registrar</td>
+          <td>约 $9.15/年</td>
+          <td><span class="dot d-good"></span>成本价，永不加价</td>
+          <td><strong>不能直接注册新域名</strong>，只能从别处转入</td>
+          <td>第二年转过来</td>
+        </tr>
+        <tr class="searchable" data-tags="NameSilo 域名 稳定">
+          <td class="pf">NameSilo</td>
+          <td>约 $10/年</td>
+          <td><span class="dot d-good"></span>长期稳定</td>
+          <td>老牌，管理简单</td>
+          <td>备选</td>
+        </tr>
+        <tr class="searchable" data-tags="Namecheap 域名 促销 续费 涨价 坑">
+          <td class="pf">Namecheap</td>
+          <td>首年常有 $6 促销</td>
+          <td><span class="dot d-bad"></span>涨到 $13.98</td>
+          <td>首年便宜，续费翻倍</td>
+          <td>注意别被套</td>
+        </tr>
+        <tr class="searchable" data-tags="xyz top 便宜 一美元 不建议 信任度">
+          <td class="pf">.xyz / .top 后缀</td>
+          <td>首年 $1–3</td>
+          <td><span class="dot d-warn"></span>续费涨到 $10+</td>
+          <td>最便宜，但外贸 B2B 客户信任度差很多</td>
+          <td>不建议</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout ok searchable" data-tags="域名 组合方案 Porkbun Cloudflare Pages 免费 推荐" style="margin-top:14px">
+    <h4>推荐组合（总成本约 ¥70/年）</h4>
+    <p>在 <strong>Porkbun</strong> 买一个 .com → DNS 托管到 <strong>Cloudflare</strong>（免费）→ 官网放 <strong>Cloudflare Pages</strong>（免费）→ 用一个子域名（比如 <code>node.你的域名.com</code>）做翻墙节点。一个域名两用，不用买两个。</p>
+  </div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section id="s8">
+  <div class="sec-head">
+    <div class="sec-num">08</div>
+    <h2>搭建方案与成本</h2>
+    <p class="sec-desc">三档方案任选，以及你买好之后我要做的事。</p>
+  </div>
+
+  <div class="plans">
+    <div class="plan searchable" data-tags="方案A 试水 便宜 成本 一个账号 VPS">
+      <div class="tier">方案 A · 试水</div>
+      <div class="price">¥60<span class="per">/月</span></div>
+      <div class="who">先验证能不能做，1–2 个账号，手机运营</div>
+      <ul>
+        <li>韩国 VPS 一台（$6/月）</li>
+        <li>.com 域名（¥70/年，折 ¥6/月）</li>
+        <li>不买住宅 IP</li>
+        <li>手机 + VPS 节点即可</li>
+      </ul>
+    </div>
+    <div class="plan best searchable" data-tags="方案B 推荐 住宅IP 官网 成本">
+      <div class="tier">方案 B · 推荐</div>
+      <div class="price">¥200<span class="per">/月</span></div>
+      <div class="who">认真做，3–5 个账号 + 官网接询盘</div>
+      <ul>
+        <li>韩国 VPS 一台（$6/月）</li>
+        <li>韩国静态住宅 IP × 3（约 $15/月）</li>
+        <li>.com 域名 + Cloudflare Pages 官网（免费）</li>
+        <li>剪辑工具 / 韩语校对成本</li>
+      </ul>
+    </div>
+    <div class="plan searchable" data-tags="方案C 矩阵 多账号 指纹浏览器 成本">
+      <div class="tier">方案 C · 矩阵</div>
+      <div class="price">¥600<span class="per">/月</span></div>
+      <div class="who">批量起号，10 个以上账号，电脑运营</div>
+      <ul>
+        <li>住宅 IP 池 × 10（约 $50/月）</li>
+        <li>指纹浏览器（$10–30/月）</li>
+        <li>VPS + 域名 + 官网</li>
+        <li>建议配 1 名会韩语的运营</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin:30px 0 14px; font-size:18px">你买好之后，我来做这几步</h3>
+  <div class="steps">
+    <div class="step searchable" data-tags="步骤 VPS 信息 SSH root 密码 远程 连接">
+      <h4>你买好 VPS，把信息发我</h4>
+      <p>需要：服务器 IP、SSH 端口（一般是 22）、root 用户名和密码。<strong>安全建议：先专门改一个临时密码给我，配完你自己再改掉，不要用你的常用密码。</strong></p>
+    </div>
+    <div class="step searchable" data-tags="步骤 sing-box 3x-ui VLESS Reality 节点 协议 搭建">
+      <h4>我远程连上去配节点</h4>
+      <p>装 3x-ui 面板 + 配 VLESS + Reality 协议（目前最抗封锁的方案），顺手做好系统加固、防火墙、BBR 加速。</p>
+    </div>
+    <div class="step searchable" data-tags="步骤 二维码 手机 Shadowrocket v2rayNG 客户端">
+      <h4>给你一个二维码，手机扫一下就能用</h4>
+      <p>iPhone 用 Shadowrocket，安卓用 v2rayNG 或 Clash。扫码导入，一键连接，不用你懂任何技术。</p>
+    </div>
+    <div class="step searchable" data-tags="步骤 域名 解析 TLS Cloudflare 配置">
+      <h4>域名解析 + TLS 一起配好</h4>
+      <p>把域名接到 Cloudflare，节点走子域名，以后换服务器你不用重新设置手机。</p>
+    </div>
+    <div class="step searchable" data-tags="步骤 官网 落地页 产品目录 询盘表单 Cloudflare Pages 免费">
+      <h4>顺手给你搭一个官网</h4>
+      <p>静态产品目录站 + 询盘表单，中韩英三语，挂 Cloudflare Pages 免费托管。TikTok 和 IG 主页就放这个链接。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section id="s9">
+  <div class="sec-head">
+    <div class="sec-num">09</div>
+    <h2>30 天行动计划</h2>
+    <p class="sec-desc">照着做就行，每周只干一件主要的事。</p>
+  </div>
+
+  <div class="grid two">
+    <div class="card searchable" data-tags="第一周 计划 注册 素材 拍摄 VPS 域名">
+      <h3>第 1 周 · 打地基</h3>
+      <div class="block">
+        <ul>
+          <li>用谷歌邮箱注册 <strong>TikTok、Instagram、YouTube、LinkedIn</strong>（都不需要韩国手机号）</li>
+          <li>买韩国 VPS + 域名，发我配置</li>
+          <li><strong>集中拍 20 条素材</strong>：车间全景、单件制作过程、质检、打包发货、产品特写</li>
+          <li>做好韩语版账号资料（简介、头像、品牌名）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card searchable" data-tags="第二周 计划 发布 标签 测试 韩语">
+      <h3>第 2 周 · 开始发</h3>
+      <div class="block">
+        <ul>
+          <li>TikTok 每天 1 条，IG 每天 1 条（Reels + 静态图交替）</li>
+          <li>YouTube Shorts 同步发 TikTok 内容</li>
+          <li><strong>测试韩语标签</strong>：每条视频用不同标签组合，看哪组播放量高</li>
+          <li>这周别急着发联系方式，先让系统给你打对标签</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card searchable" data-tags="第三周 计划 主动开发 私信 DM buyKOREA LinkedIn 批发">
+      <h3>第 3 周 · 主动出击</h3>
+      <div class="block">
+        <ul>
+          <li><strong>IG 每天 20–30 条精准私信</strong>，目标是韩国小网店主</li>
+          <li>注册 <strong>buyKOREA</strong>（免费），上传产品资料等询盘</li>
+          <li>LinkedIn 开始加韩国采购经理，每天 10 个连接请求</li>
+          <li>官网上线，主页链接全部换成官网</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card searchable" data-tags="第四周 计划 复盘 数据 Naver 韩国合作方 Kakao 도매꾹">
+      <h3>第 4 周 · 复盘 + 攻本土</h3>
+      <div class="block">
+        <ul>
+          <li>看数据：哪类视频播放高、哪类标签带来私信，砍掉没效果的方向</li>
+          <li>注册 Naver 账号，开始养博客（见效慢，越早开始越好）</li>
+          <li><strong>开始找韩国合作方 / 代理</strong>，解决 KakaoTalk 频道和 도매꾹 的营业执照问题</li>
+          <li>整理第一批询盘，做韩语报价单</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>本手册内容整理自公开资料与行业实践，2026 年 8 月版本。平台政策变化很快，重要决定前建议再核实一次官方说明。</p>
+  <p>侵权部分为一般性信息整理，不构成法律意见。</p>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var clear = document.getElementById('clear');
+  var count = document.getElementById('count');
+  var empty = document.getElementById('empty');
+  var chips = document.querySelectorAll('.chip');
+  var items = Array.prototype.slice.call(document.querySelectorAll('.searchable'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section'));
+
+  // build haystack once
+  items.forEach(function(el){
+    el._hay = ((el.getAttribute('data-tags')||'') + ' ' + (el.textContent||'')).toLowerCase();
+  });
+
+  function run(term){
+    term = (term||'').trim().toLowerCase();
+    clear.style.display = term ? 'block' : 'none';
+
+    if(!term){
+      items.forEach(function(el){ el.style.display=''; el.classList.remove('hit'); });
+      sections.forEach(function(s){ s.style.display=''; });
+      count.textContent = '';
+      empty.classList.remove('show');
+      chips.forEach(function(c){ c.classList.remove('on'); });
+      return;
+    }
+
+    var words = term.split(/\s+/).filter(Boolean);
+    var n = 0;
+
+    items.forEach(function(el){
+      var hit = words.every(function(w){ return el._hay.indexOf(w) !== -1; });
+      el.style.display = hit ? '' : 'none';
+      el.classList.toggle('hit', hit);
+      if(hit) n++;
+    });
+
+    sections.forEach(function(s){
+      var visible = Array.prototype.some.call(s.querySelectorAll('.searchable'), function(el){
+        return el.style.display !== 'none';
+      });
+      s.style.display = visible ? '' : 'none';
+    });
+
+    count.textContent = '找到 ' + n + ' 条';
+    empty.classList.toggle('show', n === 0);
+  }
+
+  var t;
+  q.addEventListener('input', function(){
+    clearTimeout(t);
+    t = setTimeout(function(){ run(q.value); }, 120);
+  });
+
+  clear.addEventListener('click', function(){
+    q.value=''; run(''); q.focus();
+  });
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      var k = c.getAttribute('data-k');
+      if(c.classList.contains('on')){
+        q.value=''; run('');
+      } else {
+        q.value = k; run(k);
+        chips.forEach(function(x){ x.classList.remove('on'); });
+        c.classList.add('on');
+      }
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if((e.metaKey||e.ctrlKey) && e.key==='k'){ e.preventDefault(); q.focus(); q.select(); }
+    if(e.key==='Escape' && document.activeElement===q){ q.value=''; run(''); }
+  });
+
+  // theme
+  var tb = document.getElementById('theme');
+  var saved = null;
+  try{ saved = localStorage.getItem('kjg-theme'); }catch(e){}
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+  tb.addEventListener('click', function(){
+    var cur = document.documentElement.getAttribute('data-theme');
+    var isDark = cur ? cur==='dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('kjg-theme', next); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
