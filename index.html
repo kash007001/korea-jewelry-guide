@@ -255,7 +255,7 @@ footer p{margin:0 0 6px}
       <a href="#s5">⑤ 侵权红线</a>
       <a href="#s6">⑥ 服务器 / IP / 手机</a>
       <a href="#s7">⑦ 域名</a>
-      <a href="#s8">⑧ 搭建步骤</a>
+      <a href="#s8">⑧ 采购与搭建</a>
       <a href="#s9">⑨ 30 天计划</a>
     </nav>
   </div>
@@ -1046,8 +1046,8 @@ footer p{margin:0 0 6px}
 <section id="s8">
   <div class="sec-head">
     <div class="sec-num">08</div>
-    <h2>搭建方案与成本</h2>
-    <p class="sec-desc">三档方案任选，以及你买好之后我要做的事。</p>
+    <h2>搭建方案：买什么、怎么买、发我什么</h2>
+    <p class="sec-desc">先选一档预算，然后照着下面的步骤去买，买完把信息发我，剩下的我来做。</p>
   </div>
 
   <div class="plans">
@@ -1086,27 +1086,86 @@ footer p{margin:0 0 6px}
     </div>
   </div>
 
-  <h3 style="margin:30px 0 14px; font-size:18px">你买好之后，我来做这几步</h3>
+  <h3 style="margin:30px 0 14px; font-size:18px">第一部分：你要买的东西（照着做，约 20 分钟）</h3>
+
   <div class="steps">
-    <div class="step searchable" data-tags="步骤 VPS 信息 SSH root 密码 远程 连接">
-      <h4>你买好 VPS，把信息发我</h4>
-      <p>需要：服务器 IP、SSH 端口（一般是 22）、root 用户名和密码。<strong>安全建议：先专门改一个临时密码给我，配完你自己再改掉，不要用你的常用密码。</strong></p>
+    <div class="step searchable" data-tags="步骤 买VPS LightNode 支付宝 中文 首尔 Ubuntu 操作 下单 怎么买">
+      <h4>买韩国 VPS —— 推荐 LightNode（中文界面，支持支付宝）</h4>
+      <p><strong>为什么选它：</strong>界面是中文的、能用支付宝付、按小时计费——先花十几块钱开一台测两天，不合适随时删，不用包月。</p>
+      <p style="margin-top:8px"><strong>下单步骤：</strong></p>
+      <ul style="margin:6px 0 0; padding-left:18px; font-size:14px; color:var(--text-2)">
+        <li>打开 <a class="ext" href="https://www.lightnode.com" target="_blank" rel="noopener">lightnode.com</a>，注册账号，充值 $10</li>
+        <li>点「创建实例」→ <strong>地区选「韩国 · 首尔 Seoul」</strong></li>
+        <li><strong>系统镜像选 Ubuntu 22.04</strong>（千万别选 Windows，又贵又没用）</li>
+        <li><strong>配置选 2核 2G</strong>（约 $7.7/月）。别买更高的，纯浪费</li>
+        <li>设一个 root 密码（<strong>用临时密码，别用你的常用密码</strong>）</li>
+        <li>创建完成后，把「IP 地址」抄下来</li>
+      </ul>
+      <p style="margin-top:8px; font-size:13.5px; color:var(--text-3)">备选：Vultr 首尔（$6/月，更便宜但界面全英文、要信用卡或 PayPal）。</p>
     </div>
-    <div class="step searchable" data-tags="步骤 sing-box 3x-ui VLESS Reality 节点 协议 搭建">
-      <h4>我远程连上去配节点</h4>
-      <p>装 3x-ui 面板 + 配 VLESS + Reality 协议（目前最抗封锁的方案），顺手做好系统加固、防火墙、BBR 加速。</p>
+
+    <div class="step searchable" data-tags="步骤 买域名 Porkbun 起名 建议 com 操作 怎么买">
+      <h4>买域名 —— Porkbun（约 ¥70/年）</h4>
+      <p>打开 <a class="ext" href="https://porkbun.com" target="_blank" rel="noopener">porkbun.com</a> → 搜你想要的名字 → 选 <strong>.com</strong> → 结账（信用卡 / PayPal）。WHOIS 隐私保护是免费自动开的，不用加购任何东西。</p>
+      <p style="margin-top:8px"><strong>起名建议（很重要，会跟你很多年）：</strong></p>
+      <ul style="margin:6px 0 0; padding-left:18px; font-size:14px; color:var(--text-2)">
+        <li><strong>不要用中文拼音</strong> —— 韩国人念不出来也记不住</li>
+        <li>用简短英文词 + jewelry / silver / jewel，例如 <code>××jewelry.com</code></li>
+        <li><strong>不要带连字符和数字</strong>（<code>xx-jewelry-88.com</code> 一看就不专业）</li>
+        <li>越短越好，最好 12 个字母以内</li>
+        <li>一定要 <strong>.com</strong>。.xyz / .top 首年才 $1，但外贸客户对这些后缀的信任度差很多</li>
+      </ul>
     </div>
-    <div class="step searchable" data-tags="步骤 二维码 手机 Shadowrocket v2rayNG 客户端">
-      <h4>给你一个二维码，手机扫一下就能用</h4>
-      <p>iPhone 用 Shadowrocket，安卓用 v2rayNG 或 Clash。扫码导入，一键连接，不用你懂任何技术。</p>
+
+    <div class="step searchable" data-tags="步骤 住宅IP 先别买 先测 风险分 后买 IPRoyal">
+      <h4>住宅 IP —— 先别急着买</h4>
+      <p>等我把节点配好，你连上去用 <a class="ext" href="https://scamalytics.com/ip" target="_blank" rel="noopener">scamalytics.com/ip</a> 测一下风险分。<strong>分数低就不用买，分数高我再告诉你去 IPRoyal 买一条</strong>（$3–8/月）。这样不会白花钱。</p>
     </div>
-    <div class="step searchable" data-tags="步骤 域名 解析 TLS Cloudflare 配置">
-      <h4>域名解析 + TLS 一起配好</h4>
-      <p>把域名接到 Cloudflare，节点走子域名，以后换服务器你不用重新设置手机。</p>
+
+    <div class="step searchable" data-tags="步骤 手机 准备 恢复出厂 不刷机 二手 设置">
+      <h4>准备一台干净手机</h4>
+      <p>二手 iPhone 就行。<strong>恢复出厂设置</strong>（不是刷机），语言改韩语、时区改首尔、<strong>不插中国 SIM 卡</strong>。详细清单看上面第 6 节。这一步可以和买 VPS 同时做。</p>
     </div>
-    <div class="step searchable" data-tags="步骤 官网 落地页 产品目录 询盘表单 Cloudflare Pages 免费">
-      <h4>顺手给你搭一个官网</h4>
-      <p>静态产品目录站 + 询盘表单，中韩英三语，挂 Cloudflare Pages 免费托管。TikTok 和 IG 主页就放这个链接。</p>
+  </div>
+
+  <h3 style="margin:30px 0 14px; font-size:18px">第二部分：买完发我这些信息</h3>
+
+  <div class="callout key searchable" data-tags="发我 信息 模板 清单 VPS IP 密码 SSH 域名 安全">
+    <h4>照着这个格式发给我就行</h4>
+    <p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13.5px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; white-space:pre-line; line-height:1.9">服务器 IP：
+      SSH 端口：22
+      用户名：root
+      临时密码：
+      域名：</p>
+    <p style="margin-top:12px"><strong>⚠️ 安全提醒（认真的）：</strong>专门设一个临时密码给我，<strong>配完你自己立刻改掉</strong>。不要用你邮箱、银行、微信的任何密码。这是给任何人服务器权限时都该做的事，不只是对我。</p>
+  </div>
+
+  <h3 style="margin:30px 0 14px; font-size:18px">第三部分：我拿到之后做什么（约 1–2 小时）</h3>
+
+  <div class="steps">
+    <div class="step searchable" data-tags="我做 系统加固 SSH 密钥 fail2ban BBR 防火墙 安全">
+      <h4>系统加固</h4>
+      <p>改 SSH 端口、装 fail2ban 防爆破、配防火墙、开 BBR 加速。这一步是防止服务器被人扫到入侵——买来不做这个，一周内就会有人来撞密码。</p>
+    </div>
+    <div class="step searchable" data-tags="我做 3x-ui VLESS Reality 节点 协议 抗封">
+      <h4>装节点：3x-ui 面板 + VLESS·Reality 协议</h4>
+      <p>Reality 是目前最抗封锁的方案，特征伪装成正常 HTTPS 流量。配好后给你一个管理面板网址，你自己也能看流量用了多少。</p>
+    </div>
+    <div class="step searchable" data-tags="我做 域名 Cloudflare 解析 TLS 子域名 换服务器">
+      <h4>域名接 Cloudflare + 配 TLS</h4>
+      <p>节点走子域名（比如 <code>node.你的域名.com</code>）。好处是以后 IP 万一被封，换台服务器改个解析就行，<strong>你手机上不用重新设置</strong>。</p>
+    </div>
+    <div class="step searchable" data-tags="我做 二维码 手机 Shadowrocket v2rayNG Clash 扫码 傻瓜">
+      <h4>给你二维码，手机扫一下就能用</h4>
+      <p>iPhone 装 Shadowrocket，安卓装 v2rayNG 或 Clash。扫码导入，点一下连接。<strong>全程不需要你懂任何技术。</strong></p>
+    </div>
+    <div class="step searchable" data-tags="我做 官网 产品目录 询盘表单 三语 Cloudflare Pages 免费">
+      <h4>搭一个官网挂上去</h4>
+      <p>产品目录 + 询盘表单，<strong>中韩英三语</strong>，放 Cloudflare Pages 免费托管。TikTok 和 IG 主页链接就放这个——韩国买家下单前一定会点进来看你是不是真工厂。</p>
+    </div>
+    <div class="step searchable" data-tags="我做 说明书 一页 重启 换节点 自己维护 傻瓜教程">
+      <h4>给你一页傻瓜说明书</h4>
+      <p>写清楚：怎么连、断了怎么重连、怎么看流量、服务器要重启怎么办。<strong>让你自己能管，不用每次都来找我。</strong></p>
     </div>
   </div>
 </section>
